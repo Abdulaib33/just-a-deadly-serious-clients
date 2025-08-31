@@ -43,7 +43,7 @@ class User3rd {
     }
 
 
-    chageEmail(newEmail){
+    changeEmail(newEmail){
         this.email = newEmail;
         console.log(`${this.name}'s Email has been updated to ${this.email}`)
     }
@@ -54,4 +54,4 @@ class User3rd {
 const user3rd = new User3rd("Abdoulaye", "Abdulaibayo08@gmail.com")
 user3rd.greet()
 
-user3rd.chageEmail("Abdulaibayobackend@gmail.com")
+user3rd.changeEmail("Abdulaibayobackend@gmail.com")
