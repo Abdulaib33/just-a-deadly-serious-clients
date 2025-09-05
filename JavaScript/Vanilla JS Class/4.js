@@ -7,7 +7,7 @@ class Rectangle {
     }
     // Getter for area
     // 12th part 
-    get area() {
+    get area() { // Getter: read-only access
         return this.width * this.height;
     }
 
