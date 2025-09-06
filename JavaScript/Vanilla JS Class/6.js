@@ -77,3 +77,4 @@ console.log(ciMap.has("nAmE")); // true
 
 ciMap.delete("AGE");
 console.log(ciMap.has("age")); // false
+
