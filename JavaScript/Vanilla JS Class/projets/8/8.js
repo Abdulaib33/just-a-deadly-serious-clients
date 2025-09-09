@@ -11,3 +11,7 @@
 //         Use errors in your other projects (Banking, Quiz, etc.)
 
 //     Practice: error handling, inheritance, reusability.
+
+class AppError {
+    
+}

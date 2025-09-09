@@ -11,3 +11,8 @@
 //         ShapeFactory (optional) to generate shapes randomly
 
 //     Practice: getters/setters, static utils, inheritance.
+
+
+class Shape {
+    
+}

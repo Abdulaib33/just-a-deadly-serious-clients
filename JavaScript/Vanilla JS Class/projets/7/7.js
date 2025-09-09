@@ -11,3 +11,7 @@
 //         Use MathUtils.randomInt for test data
 
 //     Practice: static methods, module imports, extending utility classes.
+
+class MathUtils {
+    
+}

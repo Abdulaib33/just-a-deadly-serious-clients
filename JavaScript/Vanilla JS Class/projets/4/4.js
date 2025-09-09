@@ -13,3 +13,7 @@
 //         Export Task and TaskList as ES modules
 
 //     Practice: extending built-ins (Array), modules, OOP design.
+
+class Task {
+    
+}

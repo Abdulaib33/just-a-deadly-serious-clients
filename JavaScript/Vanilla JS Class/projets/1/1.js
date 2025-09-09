@@ -22,7 +22,7 @@ class User {
         console.log(`hello ${this.name}, how are you doing ?`)
     }
 
-    set changeEmail(newEmail) { // you can do it without set, but i just wanted 
+    set changeEmail(newEmail) { // you can do it without set, but i just wanted to practice what i have understand about get and set
 
         if (!newEmal.includes("@")) {
             console.error("Invalid email")

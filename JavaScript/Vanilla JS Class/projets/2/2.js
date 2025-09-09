@@ -11,3 +11,12 @@
 //         Error handling with custom ValidationError
 
 //     Practice: private fields, static props, extending Error.
+
+class BankAccount {
+    #balance
+
+}
+
+class SavingsAccount extends b {
+
+}

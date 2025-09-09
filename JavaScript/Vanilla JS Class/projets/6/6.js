@@ -11,3 +11,7 @@
 //         CaseInsensitiveMap to store books by title
 
 //     Practice: maps, inheritance, real-world scenario.
+
+class Book {
+    
+}

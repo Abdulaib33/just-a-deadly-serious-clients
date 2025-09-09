@@ -11,3 +11,7 @@
 //         Error if invalid answer (ValidationError)
 
 //     Practice: custom errors, class composition, private score.
+
+class Question {
+    
+}
