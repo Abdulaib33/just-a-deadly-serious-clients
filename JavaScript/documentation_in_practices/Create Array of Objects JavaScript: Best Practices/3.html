@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Exercise 3</h1>
+
+    <p>
+        Make a list for to-do items where each item has a title, how important it is (priority), whether it's done (completed), and when it was made (createdDate). Write functions to add new items, remove items, and show all the important things that aren't done yet.
+    </p>
+
+
+
+    <script>
+        // ✅ Step 1: Create the initial to-do list
+        const todoList = [
+            {
+                title: "Finish Javascript Exercices",
+                priority: 1, // 1 = High, 2 = Medium, 3 = Low
+                completed: false,
+                createdDate: new Date('2025-09-15T10:00:00')
+            },
+            {
+                title: "Buy Groceries",
+                priority: 2,
+                completed: true,
+                createdDate: new Date('2025-09-14T16:30:00')
+            },
+            {
+                title: "Schedule dentist appointment",
+                priority: 1,
+                completed: false,
+                createdDate: new Date('2025-09-13T09:15:00')
+            }
+        ]
+
+        // ➕ Add a new item (immutable)
+        const addTodoItem = (list, title, priority) => {
+            const newItem = {
+                title,
+                priority,
+                completed: false,
+                createdDate: new Date()
+            };
+
+            return [...list, newItem] // // returns a new array
+        }
+
+
+
+        // ➖ Remove an item by title (immutable)
+        const removeTodItem = (list, title) => {
+            return list.filter(todo => todo.title.toLowerCase() !== title.toLowerCase())
+        }
+
+
+        // 🔍 Get important & unfinished items (immutable)
+        const getImportantUnfinishedItems = (list) => {
+            return list
+                .filter(item => item.priority === 1 && !item.completed)
+                .map(item => `${item.title} (Created: ${item.createdDate.toLocaleDateString()})`)
+        }
+
+
+        // 🧪 Example usage
+        let updatedList = addTodoItem(todoList, 'Call mom', 1);
+        updatedList = removeTodItem(updatedList, "Buy groceries"); // jjust remember immuability, our updatedList is right now our new array because of immuability, dont be stupid please for the sake of the most merciful, stay on the straight path 
+
+        console.log(getImportantUnfinishedItems(updatedList));
+        
+    </script>
+    <!-- THIS IS 100% OPTIONAL AND HAS NOTHING TO DO WITH THE ORIGINAL INTENTION, I HAVE DONE IT BECAUSE WE CAN EASILY ADD IT AS CONTINUATION WITHOUT TOUCHING THE CODE ABOVE -->
+    <ul id="todo-output"></ul> <!-- 👈 We'll inject results here -->
+
+    <script>
+        // 🖼️ Render results into the page
+        const renderList = (items) => {
+            const output = document.getElementById('todo-output')
+            output.innerHTML = ""; // clear previous
+            items.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                output.appendChild(li)
+            })
+        }
+
+         // 🧪 Example usage
+         const importantsTask = getImportantUnfinishedItems(updatedList)
+         renderList(importantsTask)
+    </script>
+    
+</body>
+</html>

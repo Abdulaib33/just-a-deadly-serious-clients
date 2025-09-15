@@ -1,0 +1,119 @@
+app_1/index.html:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app"></div>
+
+
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+app_1/js/main.js :
+
+import products from "./DB.js"
+import Catalog from "./components/catalog/Catalog.js"
+
+
+
+
+
+new Catalog({
+    elt: "#app",
+    products
+})
+
+
+
+
+app_1/js/DB.js :
+
+// Ceci devrait venir d'une API
+
+export default [
+        {id: 1, name: "Produit 1", price: 10},
+        {id: 2, name: "Produit 2", price: 20},
+        {id: 3, name: "Produit 3", price: 30}
+]
+
+
+
+
+app_1/js/components/product/template.js :
+
+export default function productTemplate(product) {
+    return `
+        <li class="product"> 
+            ${product.name}: ${product.price}€    
+        </li>
+    `
+}
+
+
+
+
+app_1/js/components/product/Product.js :
+
+import getTemplate from "./template.js"
+
+
+export default class Product {
+    constructor(data) {
+        this.id = data.id
+        this.name = data.name
+        this.price = data.price
+    }
+    render() {
+        return getTemplate(this)
+    }
+}
+
+
+
+
+
+
+app_1/js/components/catalog/template.js :
+
+export default function catalogTemplate(catalog) {
+    return `
+        <h1> Mon catalogue </h1>
+        <ul> 
+            ${catalog.products.map((product) => product.render()).join(" ")}
+        </ul>    
+    `
+}
+
+
+
+
+
+
+app_1/js/components/catalog/Catalog.js :
+
+import getTemplate from "./template.js"
+import Product from "../product/Product.js"
+export default class Catalog{
+    constructor(data) {
+        this.domElt = document.querySelector(data.elt)
+        this.products = data.products.map((product) => new Product(product)),
+        this.render()
+    }
+
+    render() {
+        this.domElt.innerHTML = getTemplate(this)
+    }
+}

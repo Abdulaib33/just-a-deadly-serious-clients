@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<div id="app"></div>
+<div id="app2"></div>
+<div id="app3"></div>
+
+
+<script>
+    // Ce code JSON pourrait venir d'une API
+const products = [
+        {id: 1, name: "Produit 1", price: 10},
+        {id: 2, name: "Produit 2", price: 20},
+        {id: 3, name: "Produit 3", price: 30}
+]
+
+
+
+function catalogTemplate(catalog) {
+    return `
+        <h1> Mon catalogue </h1>
+        <ul> 
+            ${catalog.products.map((product) => product.render()).join(" ")}
+        </ul>    
+    `
+}
+
+
+
+function productTemplate(product) {
+    return `
+        <li class="product"> 
+            ${product.name}: ${product.price}€    
+        </li>
+    `
+}
+
+class Product {
+    constructor (data) {
+        this.id = data.id
+        this.name = data.name
+        this.price = data.price
+    }
+
+    render() {
+        return productTemplate(this)
+    }
+}
+
+
+
+// const Catalog1 = { // this was ES5 before ES6 and the ES6 one isnt cmmented 
+//     producuts: [
+//         new Product({id: 1, name: "Produit 1", pice: 10}),
+//         new Product({id: 2, name: "Produit 2", pice: 20}),
+//         new Product({id: 3, name: "Produit 3", pice: 30})
+//     ],
+//     render() {
+//         return "Coucou1"
+//     }
+// }
+
+
+
+
+class Catalog2 {
+    constructor (data) { // Before : constructor (data, elt) 
+        this.products = data.products.map((product) => new Product(product)) // Before : this.products = data.map((product) => new Product(product))
+        this.domElt = document.querySelector(data.elt) // Before : this.domElt = document.querySelector(elt)
+        this.render()
+    }
+
+    render () {
+        this.domElt.innerHTML = catalogTemplate(this);
+    }
+}
+
+
+// console.log(Catalog1.render())
+
+// const catalog = new Catalog2(products, "#app") // Before
+new Catalog2({ // AFTER
+    elt: "#app",
+    products
+})
+
+new Catalog2({ 
+    elt: "#app2",
+    products
+})
+
+new Catalog2({
+    elt: "#app3",
+    products
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

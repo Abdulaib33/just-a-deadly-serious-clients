@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Exercise 2</h1>
+
+    <p>
+        Using the list of cars you made in Exercise 1, use .filter() to make a new list that only includes the red cars. Then, use .map() to make a list of strings that show the brand and model of each car.
+    </p>
+    
+
+    <script>
+
+    // ✅ Original list of cars
+    const cars = [
+        {brand: "Toyota", model: "Corolla", year: 2020, color: "Blue"},
+        {brand: "Honda", model: "Civic", year: 2019, color: "Red"},
+        {brand: "Ford", model: "Mustang", year: 2020, color: "Black"},
+        {brand: "Tesla", model: "Model 3", year: 2020, color: "White"},
+        { brand: 'BMW', model: 'X5', year: 2018, color: 'Red' }
+    ]
+
+    // ✅ Step 1: Filter only red cars
+    const redCars = cars.filter(car => car.color.toLowerCase() === "red")
+    
+    // ✅ Step 2: Map to brand + model strings
+    const redCarDescription = redCars.map(car => `Brand: ${car.brand}, Model: ${car.year} '\n`).join("") // THE JOIN IS MY IDEA it was not part the exerices nor does anyone suggest me to use it except my lord of course 
+    
+    // ✅ Output the result
+    console.log(redCarDescription)
+
+
+    // FROM SUGGESTION copilot
+    // Don't Forget:
+    // You can chain these methods for even cleaner code:
+    const redCarDescriptions = cars
+    .filter(car => car.color.toLowerCase() === 'red')
+    .map(car => `${car.brand} ${car.model}`);
+
+    console.log(redCarDescription) // Same result but different approach or way
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        color: wheat;
+    }
+</style>
+<body>
+
+<!-- <script>
+
+class Produit { // AFTER CLASSES THIS IS AN EXEMPLE OF ES6
+    constructor (data) {
+        this.id = data.id
+        this.name = data.name
+        this.taxEclPrice = data.price
+    }
+
+
+    getTaxInclPrice() {
+        return (this.taxEclPrice * (1 + this.taxRate)).toFixed(2)
+    }
+}
+
+
+// const Produit = function (data) { BEFORE CLASSES THIS IS AND EXEMPLE OF ES5
+//     this.id = data.id
+//     this.name = data.name
+//     this.taxEclPrice = data.price
+//     this.taxRate = .21
+
+//     this.getTaxInclPrice = function () {
+//         return(this.taxEclPrice * (1 + this.taxRate)).toFixed(2)
+//     }
+// }
+
+
+const Produit1 = new Produit({
+    id: 1,
+    name: "Produit 1",
+    price: 10
+})
+
+
+
+
+const Produit2 = new Produit({
+    name: "Produit 2",
+    id: 2,
+    price: 20
+})
+
+
+
+
+
+
+
+
+// const Catalogue = {
+//     created_at: "2021-01-01",
+//     products: ["Produit 1", "Produit 2"],
+//     getProductsCount: function () {
+//         return this.products.length;
+//     }
+// }
+
+
+
+
+</script>
+     -->
+
+
+
+
+
+<script>
+
+
+    class Product {
+        constructor(data) {
+            this.id = data.id
+            this.name = data.name
+            this.price = data.price
+        }
+
+        render() {
+            return `<li class="product">${this.name}: ${this.price}</li>`
+        }
+
+
+
+    }
+
+
+
+
+
+
+    const Catalogue = {
+        created_at: "2021-01-01",
+        products: [
+            new Product({
+                id: 1,
+                name: "Produit 1",
+                price: 10
+            }),
+            new Product({id: 2, name: "Produit 2", price: 20 }),
+            new Product({id: 3, name: "Produit 3", price: 30 }),
+        ],
+        getProductByIndex: function (i) {
+            return this.products[i]
+        },
+
+        addProduct: function (data) {
+            this.products.push(new Product(data))
+        },
+
+        deleteProductById: function (id) {
+            this.products = this.products.filter(function (product) {
+                return product.id != id
+            })
+        },
+
+        render: function () {
+            let code = "<ul>"
+                for (const product of this.products) {
+                    code += product.render() // if you remone the "+", it will only show the last product, and i have no idea why it's like that
+                }
+            code = code + "</ul>"
+            return code;
+        }
+
+
+    }
+
+
+    Catalogue.addProduct({
+        id: 4,
+        name: "Produit 4",
+        price: 40
+    })
+
+    document.write(Catalogue.render())
+
+
+    document.write("<br/>")
+
+    Catalogue.deleteProductById(4)
+    document.write(Catalogue.render())
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

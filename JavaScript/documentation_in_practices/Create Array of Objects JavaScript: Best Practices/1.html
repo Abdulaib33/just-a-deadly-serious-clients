@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* body {
+            background-color: black;
+            color: wheat;
+        } */
+    </style>
+</head>
+<body>
+    
+
+    <h1>Exercise 1</h1>
+
+    <p>
+        Create a list of car objects with details like brand, model, year, and color. Then, use a loop to go through the list and print out each car's model and year.
+
+    </p>
+    
+
+    <script>
+        // ✅ Step 1: Create a list of car objects
+        const cars = [
+            {brand: "Toyota", model: "Corolla", year: 2020, color: "Blue"},
+            {brand: "Honda", model: "Civic", year: 2019, color: "Red"},
+            {brand: "Ford", model: "Mustang", year: 2020, color: "Black"},
+            {brand: "Tesla", model: "Model 3", year: 2020, color: "White"},
+            
+        ]
+
+        // ✅ Step 2: Loop through the list and print model and year
+        for (const car of cars ) {
+            console.log(`Model: ${car.model}, year: ${car.year}`)
+        }
+
+
+
+        // let go further based on the suggestion of a random dude(copilot)
+
+        const printCarDetails = (carList) => {
+            for (const {model, year} of carList) {
+                console.log(`Model: ${model}, year: ${year}`)
+            }
+        }
+
+        printCarDetails(cars)
+
+    </script>
+
+
+    <h2>THIS IS AN EXTRA BASED OF AN SUGGESTION, IT'S NOT THAT HARD, LOOK FOR THE TBODY YOU CAN UNDERSTAND</h2>
+
+    <table id="carTable">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>Test Appears Under Brand</td>
+                <td>Test Appears Under Model</td>
+                <td>Test Appears Under Years</td>
+                <td>Test Appears Under Color</td>
+            </tr> -->
+        </tbody>
+    </table>
+
+
+    <script>
+
+        // ✅ Step 2: Filter cars from 2020 and newer
+        const recentCars = cars.filter(car => car.year >= 2020)
+
+
+        // ✅ Step 3: Display in table
+        const tbody = document.querySelector("#carTable tbody");
+        for (const car of recentCars) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${car.brand}</td>
+                <td>${car.model}</td>
+                <td>${car.year}</td>
+                <td>${car.color}</td>
+            `;
+
+            // WE PUT OUR ROW IN THE tbody where it place is
+            tbody.appendChild(row)
+
+        }
+
+    </script>
+
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+
+</body>
+</html>
